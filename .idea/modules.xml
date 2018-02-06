@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/integration-tests/integration-tests.iml" filepath="$PROJECT_DIR$/integration-tests/integration-tests.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vanilla-alfresco.iml" filepath="$PROJECT_DIR$/vanilla-alfresco.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vanilla-alfresco-platform-jar/vanilla-alfresco-platform-jar.iml" filepath="$PROJECT_DIR$/vanilla-alfresco-platform-jar/vanilla-alfresco-platform-jar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vanilla-alfresco-share-jar/vanilla-alfresco-share-jar.iml" filepath="$PROJECT_DIR$/vanilla-alfresco-share-jar/vanilla-alfresco-share-jar.iml" />
+    </modules>
+  </component>
+</project>
