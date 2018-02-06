@@ -141,6 +141,7 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-/.idea/
-/alf_data_dev/
+.idea/
+alf_data_dev/
+/alf_data_dev/*
 **/*.iml
