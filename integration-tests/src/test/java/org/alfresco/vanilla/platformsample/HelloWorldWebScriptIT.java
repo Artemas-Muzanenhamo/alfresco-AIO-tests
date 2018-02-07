@@ -53,28 +53,7 @@ import static org.junit.Assert.assertNotNull;
  * @version 1.0
  * @since 3.0
  */
-@RunWith(AlfrescoTestRunner.class)
-public class HelloWorldWebScriptIT extends AbstractAlfrescoIT {
-
-    private static ServiceRegistry serviceRegistry;
-    private static NodeService nodeService;
-    private static NamespaceService namespaceService;
-    private static VersionService versionService;
-    private static FileFolderService fileFolderService;
-    private static SiteService siteService;
-
-    @Before
-    public void setUp(){
-
-        // We can inject since we now have the Application Context from AlfrescoTestRunner
-        serviceRegistry = getServiceRegistry();
-        nodeService = getServiceRegistry().getNodeService();
-        namespaceService=getServiceRegistry().getNamespaceService();
-        versionService =getServiceRegistry().getVersionService();
-        fileFolderService= getServiceRegistry().getFileFolderService();
-        siteService = getServiceRegistry().getSiteService();
-
-    }
+public class HelloWorldWebScriptIT {
 
     @Test
     public void testWebScriptCall() throws Exception {
@@ -93,11 +72,6 @@ public class HelloWorldWebScriptIT extends AbstractAlfrescoIT {
 
         // Execute Web Script call
         try {
-
-            // Access the SiteService
-            NodeRef siteNodeRef = siteService.getSite("swsdp").getNodeRef();
-            assertEquals("workspace://SpacesStore/b4cff62a-664d-4d45-9302-98723eac1319", siteNodeRef);
-
             HttpGet httpget = new HttpGet(webscriptURL);
             HttpResponse httpResponse = httpclient.execute(httpget);
             assertEquals("Incorrect HTTP Response Status",
