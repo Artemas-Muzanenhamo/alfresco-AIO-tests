@@ -17,6 +17,17 @@
  */
 package org.alfresco.vanilla.platformsample;
 
+import org.alfresco.model.ContentModel;
+import org.alfresco.rad.test.AbstractAlfrescoIT;
+import org.alfresco.rad.test.AlfrescoTestRunner;
+import org.alfresco.service.ServiceRegistry;
+import org.alfresco.service.cmr.model.FileFolderService;
+import org.alfresco.service.cmr.repository.NodeRef;
+import org.alfresco.service.cmr.repository.NodeService;
+import org.alfresco.service.cmr.site.SiteService;
+import org.alfresco.service.cmr.version.VersionService;
+import org.alfresco.service.namespace.NamespaceService;
+import org.alfresco.service.namespace.QName;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -28,7 +39,9 @@ import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -40,7 +53,29 @@ import static org.junit.Assert.assertNotNull;
  * @version 1.0
  * @since 3.0
  */
-public class HelloWorldWebScriptIT {
+@RunWith(AlfrescoTestRunner.class)
+public class HelloWorldWebScriptIT extends AbstractAlfrescoIT {
+
+    private static ServiceRegistry serviceRegistry;
+    private static NodeService nodeService;
+    private static NamespaceService namespaceService;
+    private static VersionService versionService;
+    private static FileFolderService fileFolderService;
+    private static SiteService siteService;
+
+    @Before
+    public void setUp(){
+
+        // We can inject since we now have the Application Context from AlfrescoTestRunner
+        serviceRegistry = getServiceRegistry();
+        nodeService = getServiceRegistry().getNodeService();
+        namespaceService=getServiceRegistry().getNamespaceService();
+        versionService =getServiceRegistry().getVersionService();
+        fileFolderService= getServiceRegistry().getFileFolderService();
+        siteService = getServiceRegistry().getSiteService();
+
+    }
+
     @Test
     public void testWebScriptCall() throws Exception {
         String webscriptURL = "http://localhost:8080/alfresco/service/sample/helloworld";
@@ -58,6 +93,11 @@ public class HelloWorldWebScriptIT {
 
         // Execute Web Script call
         try {
+
+            // Access the SiteService
+            NodeRef siteNodeRef = siteService.getSite("swsdp").getNodeRef();
+            assertEquals("workspace://SpacesStore/b4cff62a-664d-4d45-9302-98723eac1319", siteNodeRef);
+
             HttpGet httpget = new HttpGet(webscriptURL);
             HttpResponse httpResponse = httpclient.execute(httpget);
             assertEquals("Incorrect HTTP Response Status",
