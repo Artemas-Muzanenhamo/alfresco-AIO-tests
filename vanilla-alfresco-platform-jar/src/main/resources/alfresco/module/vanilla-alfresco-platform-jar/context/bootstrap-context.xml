@@ -11,6 +11,7 @@
     <bean id="vanilla-alfresco-platform-jar.dictionaryBootstrap" parent="dictionaryModelBootstrap" depends-on="dictionaryBootstrap">
         <property name="models">
             <list>
+                <value>alfresco/module/${project.artifactId}/model/my-custom-model.xml</value>
                 <value>alfresco/module/${project.artifactId}/model/content-model.xml</value>
                 <value>alfresco/module/${project.artifactId}/model/workflow-model.xml</value>
             </list>

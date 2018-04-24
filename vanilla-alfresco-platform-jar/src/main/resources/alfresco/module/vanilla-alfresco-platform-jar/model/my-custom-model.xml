@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model name="artemas:contentModel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+
+    <description>Trinity Management</description>
+    <author>Artemas Muzanenhamo</author>
+    <version>1.0</version>
+
+    <imports>
+        <!-- Import Alfresco Dictionary Definitions -->
+        <import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d"/>
+        <!-- Import Alfresco Content Domain Model Definitions -->
+        <import uri="http://www.alfresco.org/model/content/1.0" prefix="cm"/>
+    </imports>
+
+    <namespaces>
+        <namespace uri="http://www.acme.org/model/content/1.0" prefix="artemas"/>
+    </namespaces>
+</model>

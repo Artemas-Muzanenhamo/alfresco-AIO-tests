@@ -145,3 +145,5 @@ fabric.properties
 alf_data_dev/
 /alf_data_dev/*
 **/*.iml
+/src/test/license/*.lic
+/vanilla-alfresco-share-jar/vanilla-alfresco-share-jar.iml

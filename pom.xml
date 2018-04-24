@@ -33,11 +33,11 @@
         <!-- Alfresco Platform and Share webapp versions, these are the original Alfresco webapps that will be
              customized and then deployed and run by the tomcat maven plugin when
              executing for example $ mvn clean install alfresco:run -->
-        <alfresco.platform.version>5.2.f</alfresco.platform.version>
-        <alfresco.share.version>5.2.e</alfresco.share.version>
+        <alfresco.platform.version>5.2.3</alfresco.platform.version>
+        <alfresco.share.version>5.2.3</alfresco.share.version>
 
         <!-- Default is to run with a Community edition, change to 'enterprise' if using Enterprise edition -->
-        <maven.alfresco.edition>community</maven.alfresco.edition>
+        <maven.alfresco.edition>enterprise</maven.alfresco.edition>
 
         <!-- Alfresco Surf version, if you change Share version you might need to change Surf version -->
         <alfresco.surf.version>6.11</alfresco.surf.version>
@@ -296,6 +296,13 @@
                         (i.e. alfresco.war)
                     -->
                     <platformModules>
+                        <!-- Records Management-->
+                        <moduleDependency>
+                            <groupId>org.alfresco</groupId>
+                            <artifactId>alfresco-rm-enterprise-repo</artifactId>
+                            <version>2.6.0</version>
+                            <type>amp</type>
+                        </moduleDependency>
                         <!-- Share Services will be ignored if you are on Platform earlier than 5.1 -->
                         <moduleDependency>
                             <groupId>${alfresco.groupId}</groupId>
@@ -330,6 +337,13 @@
                             <groupId>${project.groupId}</groupId>
                             <artifactId>vanilla-alfresco-share-jar</artifactId>
                             <version>${project.version}</version>
+                        </moduleDependency>
+                        <!-- Records Management -->
+                        <moduleDependency>
+                            <groupId>org.alfresco</groupId>
+                            <artifactId>alfresco-rm-enterprise-share</artifactId>
+                            <version>2.6.0</version>
+                            <type>amp</type>
                         </moduleDependency>
                     </shareModules>
                 </configuration>
