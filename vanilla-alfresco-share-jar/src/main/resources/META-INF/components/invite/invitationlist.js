@@ -228,6 +228,7 @@
             var rolesMenu = [], role;
             for (var i = 0, j = me.options.roles.length; i < j; i++)
             {
+                // CHECK FOR ROLES HERE AND PUSH THE ONES WE NEED!
                 if (me.options.roles[i] == 'SiteCollaborator' || me.options.roles[i] == 'SiteConsumer') {
                     role = me.options.roles[i];
                     rolesMenu.push(
