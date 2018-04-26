@@ -15,6 +15,14 @@
           </web-framework>
         </config>
       </configurations>
+
+        <customizations>
+            <!-- Custom toolbar for the document library -->
+            <customization>
+                <targetPackageRoot>org.alfresco.components.invite</targetPackageRoot>
+                <sourcePackageRoot>org.alfresco.vanilla.components.invite</sourcePackageRoot>
+            </customization>
+        </customizations>
     </module>
   </modules>
 </extension>
