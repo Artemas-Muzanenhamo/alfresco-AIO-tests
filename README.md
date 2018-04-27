@@ -24,11 +24,61 @@ Run with `mvn clean install -DskipTests=true alfresco:run` or `./run.sh` and ver
  * Resources loaded from META-INF
  * Web Fragment (this includes a sample servlet configured via web fragment)
  
-# TODO
- 
-  * Abstract assembly into a dependency so we don't have to ship the assembly in the archetype
-  * Purge
-  * Functional/remote unit tests
-   
-  
- 
+## Extend an existing Surf component
+
+* `invitationlist-custom.js` -> _alfresco-share-jar/src/main/resources/META-INF/components/invite/invitationlist-custom.js_
+* `trinity-alfresco-share-jar-example-widgets.xml` :point_down:
+```xml
+<extension>
+    <modules>
+        <module>
+            <id>trinity-alfresco-share-jar - Example Aikau Widgets</id>
+            <version>1.0</version>
+            <auto-deploy>true</auto-deploy>
+            <configurations>
+                <config evaluator="string-compare" condition="WebFramework" replace="false">
+                    <web-framework>
+                        <dojo-pages>
+                            <packages>
+                                <package name="tutorials" location="resources/alfresco-share-jar/js/tutorials"/>
+                            </packages>
+                        </dojo-pages>
+                    </web-framework>
+                </config>
+            </configurations>
+
+            <customizations>
+                <!-- Custom InviteList for adding Users -->
+                <customization>
+                    <targetPackageRoot>org.alfresco.components.invite</targetPackageRoot>
+                    <sourcePackageRoot>org.alfresco.company.components.invite</sourcePackageRoot>
+                </customization>
+            </customizations>
+
+        </module>
+    </modules>
+</extension>
+```
+located at _alfresco-share-jar/src/main/resources/alfresco/web-extension/site-data/extensions/alfresco-share-jar-example-widgets.xml_
+
+* `invitationlist.get.html.ftl` :point_down:
+```javascript
+<@markup id="user-list-custom-js" target="js" action="after" scope="template">
+<#-- JavaScript Dependencies -->
+    <@script type="text/javascript" src="${url.context}/res/components/invite/invitationlist-custom.js" group="invite"/>
+</@>
+```
+
+* `invitationlist.get.js` :point_down:
+
+```javascript
+// Find the default InvitationList widget and replace it with the custom widget
+var invitationList = widgetUtils.findObject(model.widgets, "id", "InvitationList");
+
+if (invitationList)
+{
+    invitationList.name =  "Alfresco.InvitationList.Custom";
+}
+```
+
+located at _alfresco-share-jar/src/main/resources/alfresco/web-extension/site-webscripts/org/alfresco/company/components/invite_
