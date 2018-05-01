@@ -27,12 +27,12 @@ Run with `mvn clean install -DskipTests=true alfresco:run` or `./run.sh` and ver
 ## Extend an existing Surf component
 
 * `invitationlist-custom.js` -> _alfresco-share-jar/src/main/resources/META-INF/components/invite/invitationlist-custom.js_
-* `trinity-alfresco-share-jar-example-widgets.xml` :point_down:
+* `alfresco-share-jar-example-widgets.xml` :point_down:
 ```xml
 <extension>
     <modules>
         <module>
-            <id>trinity-alfresco-share-jar - Example Aikau Widgets</id>
+            <id>alfresco-share-jar - Example Aikau Widgets</id>
             <version>1.0</version>
             <auto-deploy>true</auto-deploy>
             <configurations>
